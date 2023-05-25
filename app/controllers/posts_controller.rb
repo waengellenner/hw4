@@ -5,6 +5,14 @@ class PostsController < ApplicationController
     @post.place_id = params["place_id"]
   end
 
+  def index 
+    if @current_user
+    @posts = Post.where({ "user_id" => @current_user["id"] })
+    else
+    redirect_to "/login"
+    end
+  end
+
   def create
     @post = Post.new
     @post["title"] = params["post"]["title"]

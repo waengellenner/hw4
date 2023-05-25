@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     @user = User.find_by({ "username" => params["username"] })
     if @user
       if BCrypt::Password.new(@user["password"]) == params["password"]
-        session["username"] = @user["username"]
+        session["user_id"] = @user["id"]
         flash["notice"] = "Welcome."
         redirect_to "/"
       else
