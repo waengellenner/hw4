@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         redirect_to "/login"
       end
     else
-      flash["notice"] = "Username does not exist."
+      flash["notice"] = "Email does not exist."
       redirect_to "/login"
     end
   end
